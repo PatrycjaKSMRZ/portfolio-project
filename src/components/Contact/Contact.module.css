@@ -1,0 +1,96 @@
+.contact {
+  padding: 6rem 0;
+  background: #0a0a0a;
+  min-height: 60vh;  /* Dodaj minimalną wysokość */
+  display: flex;
+  align-items: center;  /* Wyśrodkuj pionowo */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 0.5rem;  /* Zmniejsz odstęp */
+}
+
+.sectionTitle::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+.contactContent {
+  text-align: center;
+  max-width: 600px;  /* Ogranicz szerokość dla lepszego czytania */
+  margin: 0 auto;    /* Wyśrodkuj */
+  padding: 2rem;     /* Dodaj padding wewnątrz */
+}
+
+.contactText {
+  font-size: 1.25rem;  /* Większy tekst */
+  color: #9ca3af;
+  margin-bottom: 2rem;  /* Większy odstęp pod tekstem */
+  line-height: 1.8;
+}
+
+.contactEmail {
+  display: inline-block;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #818cf8;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 0.75rem 2rem;  /* Większy padding */
+  border: 2px solid #6366f1;
+  border-radius: 0.5rem;
+  background: rgba(99, 102, 241, 0.05);  /* Lekkie tło */
+}
+
+.contactEmail:hover {
+  color: #a78bfa;
+  border-color: #8b5cf6;
+  background: rgba(99, 102, 241, 0.15);
+  transform: translateY(-2px);  /* Uniesienie przy hover */
+  box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+}
+
+/* Dodatkowe opcje - ikona lub separator */
+.contactDivider {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(135deg, #6366f1, transparent);
+  margin: 0 auto 1.5rem;
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+  .contact {
+    padding: 4rem 0;
+    min-height: 50vh;
+  }
+
+  .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .contactText {
+    font-size: 1.125rem;
+  }
+
+  .contactEmail {
+    font-size: 1.25rem;
+    padding: 0.5rem 1.5rem;
+  }
+}
