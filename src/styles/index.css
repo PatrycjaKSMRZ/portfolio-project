@@ -1,3 +1,17 @@
 @import './variables.css';
 @import './globals.css';
 @import "tailwindcss";
+
+/* Dla użytkowników, którzy nie mają ustawionej preferencji redukcji ruchu */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Szanuj preferencje użytkownika */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

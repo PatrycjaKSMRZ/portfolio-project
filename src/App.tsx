@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect } from 'react';
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import About from './components/About/About';
@@ -9,56 +9,34 @@ import Footer from './components/Footer/Footer';
 import './styles/index.css';
 
 function App() {
-  // ✅ Poprawiony typ: Element | null
-  const sectionCache = useRef(new Map<string, Element | null>());
-  const isMounted = useRef(true);
-
-  const handleSmoothScroll = useCallback((e: MouseEvent) => {
-    if (!isMounted.current) return;
-
-    const anchor = (e.target as HTMLElement)?.closest?.('a[href^="#"]');
-    if (!anchor) return;
-
-    e.preventDefault();
-    const href = anchor.getAttribute('href');
-    if (!href) return;
-
-    // ✅ Teraz typ jest zgodny: Element | null | undefined
-    let target = sectionCache.current.get(href);
-    
-    if (!target) {
-      target = document.querySelector(href); // ✅ Może być null, ale typ na to pozwala
-      
-      if (target) {
-        sectionCache.current.set(href, target);
-      } else {
-        console.warn(`Section "${href}" not found in DOM`);
-        return;
-      }
-    }
-
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    
-    target.scrollIntoView({
-      behavior: prefersReducedMotion.matches ? 'instant' : 'smooth',
-      block: 'start',
-    });
-
-    if (window.history?.pushState) {
-      window.history.pushState(null, '', href);
-    }
-  }, []);
-
   useEffect(() => {
-    isMounted.current = true;
-    document.addEventListener('click', handleSmoothScroll);
+    const handleSmoothScroll = (e: MouseEvent) => {
+      const anchor = (e.target as HTMLElement)?.closest?.('a[href^="#"]');
+      if (!anchor) return;
 
-    return () => {
-      isMounted.current = false;
-      document.removeEventListener('click', handleSmoothScroll);
-      sectionCache.current.clear();
+      e.preventDefault();
+      const targetId = anchor.getAttribute('href');
+      if (!targetId) return;
+      
+      const target = document.querySelector(targetId);
+      if (!target) return;
+
+      // Pobierz wysokość headera
+      const header = document.querySelector('header');
+      const headerHeight = header ? header.offsetHeight : 80;
+      
+      // Oblicz pozycję z uwzględnieniem headera
+      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+      
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
     };
-  }, [handleSmoothScroll]);
+
+    document.addEventListener('click', handleSmoothScroll);
+    return () => document.removeEventListener('click', handleSmoothScroll);
+  }, []);
 
   return (
     <div className="app">
