@@ -29,7 +29,7 @@ const Header = () => {
       <div className={styles.container}>
         <div className={styles.headerContent}>
           <a href="#home" className={styles.logo}>
-            <span className={styles.logoText}>Adam</span>
+            <span className={styles.logoText}></span>
           </a>
 
           <nav className={styles.desktopNav}>
