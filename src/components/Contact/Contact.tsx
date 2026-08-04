@@ -12,10 +12,32 @@ const Contact = () => {
     setStatus('');
 
     const form = e.currentTarget;
-    const formData = new FormData(form);
+    //const formData = new FormData(form);
     
     try {
       // Użyj jednej z opcji:
+     // Najłatwiejsze rozwiązanie do szybkiego wdrożenia:
+//Formspree - darmowe, bez instalacji:
+
+//Idź na formspree.io
+
+//Załóż konto i stwórz formularz
+
+//Otrzymasz link: https://formspree.io/f/your_form_id
+
+//Wklej go do kodu
+
+///tsx
+//const handleSubmit = async (e) => {
+ // e.preventDefault();
+ // const response = await fetch('https://formspree.io/f/your_form_id', {
+ //   method: 'POST',
+ //   body: new FormData(e.target),
+ // });
+ // if (response.ok) {
+    // sukces
+ // }
+//};
       
       // 1. EmailJS (zainstaluj: npm install @emailjs/browser)
       // import emailjs from '@emailjs/browser';
