@@ -1,9 +1,9 @@
 .contact {
   padding: 6rem 0;
   background: #0a0a0a;
-  min-height: 60vh;  /* Dodaj minimalną wysokość */
+  min-height: 60vh;
   display: flex;
-  align-items: center;  /* Wyśrodkuj pionowo */
+  align-items: center;
 }
 
 .container {
@@ -18,7 +18,7 @@
   font-weight: 700;
   text-align: center;
   color: #ffffff;
-  margin-bottom: 0.5rem;  /* Zmniejsz odstęp */
+  margin-bottom: 0.5rem;
 }
 
 .sectionTitle::after {
@@ -33,18 +33,132 @@
 
 .contactContent {
   text-align: center;
-  max-width: 600px;  /* Ogranicz szerokość dla lepszego czytania */
-  margin: 0 auto;    /* Wyśrodkuj */
-  padding: 2rem;     /* Dodaj padding wewnątrz */
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
 .contactText {
-  font-size: 1.25rem;  /* Większy tekst */
+  font-size: 1.25rem;
   color: #9ca3af;
-  margin-bottom: 2rem;  /* Większy odstęp pod tekstem */
+  margin-bottom: 2rem;
   line-height: 1.8;
 }
 
+/* ========== STYLE FORMULARZA ========== */
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  color: #ffffff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: #6366f1;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: #6b7280;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submitBtn {
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.submitBtn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+}
+
+.submitBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ========== KOMUNIKATY ========== */
+.successMessage {
+  color: #34d399;
+  background: rgba(52, 211, 153, 0.1);
+  border: 1px solid rgba(52, 211, 153, 0.2);
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.errorMessage {
+  color: #f87171;
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.2);
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  animation: fadeIn 0.3s ease;
+}
+
+/* ========== BACKUP EMAIL ========== */
+.emailBackup {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  color: #9ca3af;
+  font-size: 0.95rem;
+}
+
+.emailBackup span {
+  margin-right: 0.5rem;
+}
+
+.emailBackup a {
+  color: #818cf8;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.emailBackup a:hover {
+  color: #a78bfa;
+}
+
+/* ========== STARA WERSJA (bez formularza) ========== */
 .contactEmail {
   display: inline-block;
   font-size: 1.5rem;
@@ -52,29 +166,59 @@
   color: #818cf8;
   text-decoration: none;
   transition: all 0.3s ease;
-  padding: 0.75rem 2rem;  /* Większy padding */
+  padding: 0.75rem 2rem;
   border: 2px solid #6366f1;
   border-radius: 0.5rem;
-  background: rgba(99, 102, 241, 0.05);  /* Lekkie tło */
+  background: rgba(99, 102, 241, 0.05);
 }
 
 .contactEmail:hover {
   color: #a78bfa;
   border-color: #8b5cf6;
   background: rgba(99, 102, 241, 0.15);
-  transform: translateY(-2px);  /* Uniesienie przy hover */
+  transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
 }
 
-/* Dodatkowe opcje - ikona lub separator */
-.contactDivider {
-  width: 80px;
-  height: 2px;
-  background: linear-gradient(135deg, #6366f1, transparent);
-  margin: 0 auto 1.5rem;
+/* ========== WRAPPER DO KOPIOWANIA ========== */
+.emailWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
-/* Responsywność */
+.copyBtn {
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
+  color: #9ca3af;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.copyBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-color: #6366f1;
+}
+
+/* ========== ANIMACJE ========== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== RESPONSYWNOŚĆ ========== */
 @media (max-width: 768px) {
   .contact {
     padding: 4rem 0;
@@ -92,5 +236,54 @@
   .contactEmail {
     font-size: 1.25rem;
     padding: 0.5rem 1.5rem;
+  }
+
+  .contactContent {
+    padding: 1rem;
+  }
+
+  .input,
+  .textarea {
+    font-size: 0.95rem;
+    padding: 0.6rem 0.875rem;
+  }
+
+  .submitBtn {
+    font-size: 0.95rem;
+    padding: 0.6rem 1.5rem;
+  }
+
+  .emailWrapper {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .copyBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact {
+    padding: 3rem 0;
+    min-height: 40vh;
+  }
+
+  .sectionTitle {
+    font-size: 1.75rem;
+  }
+
+  .contactText {
+    font-size: 1rem;
+  }
+
+  .contactEmail {
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .contactContent {
+    padding: 0.5rem;
   }
 }
